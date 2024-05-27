@@ -75,29 +75,48 @@ const Profile: NextPage = () => {
   };
 
   return (
-    <main className="w-full bg-[#09141A] min-h-[100vh] p-4 pt-10 flex flex-col gap-4">
-      <div className="flex gap-2 cursor-pointer" onClick={goBack}>
-        <Image src={chevron} alt="chevron" className="w-auto h-auto" />
-        <p className="font-semibold text-lg text-white">Back</p>
-      </div>
-      <div className="w-full bg-[#162329] p-5 rounded-lg h-48 relative overflow-hidden flex items-end">
-        {previewUrl && (
-          <img
-            src={previewUrl}
-            alt="image"
-            className="w-auto h-auto absolute top-0 left-0 object-cover"
-          />
-        )}
-        <div className="z-20 relative">
-          <p className="text-white font-semibold">{data?.email}</p>
+    <main className="w-full bg-[#09141A] min-h-[100vh] p-4 pt-10 flex justify-center">
+      <div className="flex flex-col gap-4 max-w-xl">
+        <div
+          className="flex gap-2 cursor-pointer mt-10 sm:mb-10"
+          onClick={goBack}
+        >
+          <Image src={chevron} alt="chevron" className="w-auto h-auto" />
+          <p className="font-semibold text-lg text-white">Back</p>
         </div>
+        <div className="w-full bg-[#162329] p-5 rounded-lg h-48 relative overflow-hidden flex items-end">
+          {previewUrl && (
+            <img
+              src={previewUrl}
+              alt="image"
+              className="w-auto h-auto absolute top-0 left-0 object-cover"
+            />
+          )}
+          <div className="z-20 relative">
+            <p className="text-white font-semibold">
+              {data?.name ?? data.name}
+            </p>
+            <div className="flex gap-2 mt-1">
+              {data.horoscope && (
+                <p className="text-white p-1.5 px-2 bg-white bg-opacity-10 rounded-full">
+                  {data?.horoscope}
+                </p>
+              )}
+              {data.horoscope && (
+                <p className="text-white p-1.5 px-2 bg-white bg-opacity-10  rounded-full">
+                  {data?.horoscope}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+        <About
+          addImage={handleInputFile}
+          data={data}
+          onChangeData={handleChangeAbout}
+        />
+        <Interest data={data} />
       </div>
-      <About
-        addImage={handleInputFile}
-        data={data}
-        onChangeData={handleChangeAbout}
-      />
-      <Interest data={data} />
     </main>
   );
 };

@@ -10,12 +10,14 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
     router.back();
   };
   return (
-    <main className="container-auth p-4 pt-20">
-      <div className="flex gap-2 cursor-pointer" onClick={goBack}>
-        <Image src={chevron} alt="chevron" className="w-auto h-auto" />
-        <p className="font-semibold text-lg">Back</p>
+    <main className="container-auth p-4 pt-20 flex justify-center">
+      <div className="w-full max-w-xl">
+        <div className="flex gap-2 cursor-pointer" onClick={goBack}>
+          <Image src={chevron} alt="chevron" className="w-auto h-auto" />
+          <p className="font-semibold text-lg">Back</p>
+        </div>
+        <div className="pt-20">{children}</div>
       </div>
-      <div className="pt-20">{children}</div>
     </main>
   );
 }

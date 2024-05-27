@@ -13,6 +13,7 @@ import TextGradient from "@/components/text-gradient";
 
 function Register() {
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const router = useRouter();
   const formik = useFormik({
@@ -59,6 +60,7 @@ function Register() {
   }, []);
 
   const postData = async () => {
+    setIsLoading(true);
     try {
       const res = await axios.post(`${baseUrl}api/register`, formik.values);
       console.log(res);
@@ -66,6 +68,8 @@ function Register() {
     } catch (error) {
       console.log("asdasdasd");
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -101,7 +105,12 @@ function Register() {
         name="confirm_password"
         err={formik.errors.confirm_password}
       />
-      <Button type="submit" className="mt-5" disabled={!isValid}>
+      <Button
+        isLoading={isLoading}
+        type="submit"
+        className="mt-5"
+        disabled={!isValid}
+      >
         {"Register"}
       </Button>
       <div className="flex justify-center mt-10 gap-2">

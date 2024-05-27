@@ -13,6 +13,7 @@ import Link from "next/link";
 
 function Login() {
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const router = useRouter();
   const formik = useFormik({
@@ -46,6 +47,7 @@ function Login() {
   }, []);
 
   const postData = async () => {
+    setIsLoading(true);
     let body = {
       username: formik.values.email,
       email: formik.values.email,
@@ -58,9 +60,10 @@ function Login() {
         router.push("/profile");
       }
       alert(data.message);
-      //   router.push("/auth/login");
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -81,7 +84,12 @@ function Login() {
         name="password"
         err={formik.errors.password}
       />
-      <Button type="submit" className="mt-5" disabled={!isValid}>
+      <Button
+        isLoading={isLoading}
+        type="submit"
+        className="mt-5"
+        disabled={!isValid}
+      >
         Login
       </Button>
       <div className="flex justify-center mt-10 gap-2">

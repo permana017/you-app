@@ -61,28 +61,30 @@ function InterestPage() {
   };
 
   return (
-    <main className="container-auth p-4 pt-20">
-      <div className="flex justify-between">
-        <div className="flex cursor-pointer -ml-2" onClick={goBack}>
-          <CgChevronLeft size={30} />
-          <p className="font-semibold text-lg">Back</p>
+    <main className="container-auth p-4 pt-20 flex justify-center">
+      <div className="max-w-xl">
+        <div className="flex justify-between">
+          <div className="flex cursor-pointer -ml-2" onClick={goBack}>
+            <CgChevronLeft size={30} />
+            <p className="font-semibold text-lg">Back</p>
+          </div>
+          <TextGradient
+            className="bg-text-gradient-blue text-lg cursor-pointer"
+            onClick={updateProfile}
+          >
+            Save
+          </TextGradient>
         </div>
-        <TextGradient
-          className="bg-text-gradient-blue text-lg cursor-pointer"
-          onClick={updateProfile}
-        >
-          Save
-        </TextGradient>
+        <div className="mt-20 px-3 mb-5">
+          <TextGradient>Tell everyone about yourself</TextGradient>
+          <p className="font-semibold text-lg">What interest you?</p>
+        </div>
+        <MultipleInput
+          values={data.interests}
+          addItem={handleAddItem}
+          deleteItem={handleDeleteItem}
+        />
       </div>
-      <div className="mt-20 px-3 mb-5">
-        <TextGradient>Tell everyone about yourself</TextGradient>
-        <p className="font-semibold text-lg">What interest you?</p>
-      </div>
-      <MultipleInput
-        values={data.interests}
-        addItem={handleAddItem}
-        deleteItem={handleDeleteItem}
-      />
     </main>
   );
 }
