@@ -63,8 +63,12 @@ function Register() {
     setIsLoading(true);
     try {
       const res = await axios.post(`${baseUrl}api/register`, formik.values);
-      console.log(res);
-      router.push("/auth/login");
+      if (res.data.message == "User already exists") {
+        alert(res.data.message);
+      } else {
+        router.push("/auth/login");
+        alert(`${res.data.message}, Please Login to continue`);
+      }
     } catch (error) {
       console.log("asdasdasd");
       console.log(error);

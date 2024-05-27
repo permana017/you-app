@@ -78,7 +78,7 @@ const Profile: NextPage = () => {
 
   return (
     <main className="w-full bg-[#09141A] min-h-[100vh] p-4 pt-10 flex justify-center">
-      <div className="flex flex-col gap-4 max-w-xl">
+      <div className="flex flex-col gap-4 w-full max-w-xl">
         <div
           className="flex gap-2 cursor-pointer mt-10 sm:mb-10"
           onClick={goBack}
@@ -96,17 +96,17 @@ const Profile: NextPage = () => {
           )}
           <div className="z-20 relative">
             <p className="text-white font-semibold">
-              {data?.name ?? data.name}
+              {data?.name ?? data.email}
             </p>
             <div className="flex gap-2 mt-1">
               {data.horoscope && (
-                <p className="text-white p-1.5 px-2 bg-white bg-opacity-10 rounded-full">
+                <p className="text-white p-1.5 px-2 bg-white bg-opacity-10 text-sm rounded-full">
                   {data?.horoscope}
                 </p>
               )}
-              {data.horoscope && (
-                <p className="text-white p-1.5 px-2 bg-white bg-opacity-10  rounded-full">
-                  {data?.horoscope}
+              {data.zodiac && (
+                <p className="text-white p-1.5 px-2 bg-white bg-opacity-10 text-sm  rounded-full">
+                  {data?.zodiac}
                 </p>
               )}
             </div>

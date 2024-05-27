@@ -8,6 +8,7 @@ import TextGradient from "@/components/text-gradient";
 import { FiPlus } from "react-icons/fi";
 import axiosInstance from "@/utils/axiosSetup";
 import { useRouter } from "next/navigation";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface AboutProps {
   data: IData;
@@ -17,14 +18,18 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ data, onChangeData, addImage }) => {
   const [isEdit, setIsEdit] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const updateProfile = async () => {
+    setIsLoading(true);
     try {
       const res = await axiosInstance.put("api/updateProfile", data);
       alert(res.data.message);
       setIsEdit(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -37,13 +42,23 @@ const About: React.FC<AboutProps> = ({ data, onChangeData, addImage }) => {
             size={22}
             onClick={() => setIsEdit(true)}
           />
-        ) : (
+        ) : !isLoading ? (
           <TextGradient
             className="text-sm cursor-pointer"
             onClick={updateProfile}
           >
             Save & Update
           </TextGradient>
+        ) : (
+          <div className="flex items-center gap-2">
+            <AiOutlineLoading3Quarters
+              size={18}
+              className="animate-spin text-white"
+            />
+            <TextGradient className="text-sm cursor-pointer">
+              Save Data
+            </TextGradient>
+          </div>
         )}
       </div>
       {isEdit && (

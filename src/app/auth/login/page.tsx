@@ -25,7 +25,10 @@ function Login() {
       postData();
     },
     validationSchema: yup.object({
-      email: yup.string().min(2, "Mininum 2 characters").required("Required!"),
+      email: yup
+        .string()
+        .email("Invalid email format")
+        .required("Email Is Required!"),
       password: yup
         .string()
         .min(8, "Password Minimum 8 characters")
@@ -72,7 +75,7 @@ function Login() {
       <p className="text-2xl font-bold mb-5">Login</p>
       <InputField
         value={formik.values.email}
-        placeholder="Create email"
+        placeholder="Create Email"
         onChange={formik.handleChange}
         name="email"
         err={formik.errors.email}
