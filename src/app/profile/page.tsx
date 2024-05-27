@@ -12,10 +12,12 @@ import { getZodiacSign } from "@/utils/zodiac";
 import { getHoroscope } from "@/utils/hosroscope";
 
 const Profile: NextPage = () => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    redirect("/auth/login");
-  }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      redirect("/auth/login");
+    }
+  }, []);
   const [data, setData] = useState<IData>({
     username: "",
     name: "",
