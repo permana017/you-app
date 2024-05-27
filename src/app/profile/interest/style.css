@@ -1,0 +1,12 @@
+.container-auth {
+  width: 100%;
+  height: 100dvh;
+  background: rgb(31, 66, 71);
+  background: linear-gradient(
+    180deg,
+    rgba(31, 66, 71, 1) 5%,
+    rgba(13, 29, 35, 1) 70%,
+    rgba(9, 20, 26, 1) 90%
+  );
+  color: #ffffff;
+}
