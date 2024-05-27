@@ -1,6 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
-import { FaPlus } from "react-icons/fa6";
+import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 
 interface MultipleInputProps {

@@ -1,7 +1,6 @@
 "use client";
 import InputField from "@/components/input";
-import React, { useState, ChangeEvent, useEffect } from "react";
-import { User } from "../interface";
+import React, { useState, useEffect } from "react";
 import Button from "@/components/button";
 import { useFormik } from "formik";
 import * as yup from "yup";

@@ -2,7 +2,6 @@
 import React from "react";
 import { PiPencilSimpleLine } from "react-icons/pi";
 import { IData } from "./interface";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface InterestProps {

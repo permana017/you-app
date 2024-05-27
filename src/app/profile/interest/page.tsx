@@ -19,6 +19,7 @@ function InterestPage() {
     interests: [],
     zodiac: "",
     horoscope: "",
+    gender: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 

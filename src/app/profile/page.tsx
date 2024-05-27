@@ -28,6 +28,7 @@ const Profile: NextPage = () => {
     interests: [],
     zodiac: "",
     horoscope: "",
+    gender: "",
   });
   const [previewUrl, setPreviewUrl] = useState<string>("");
   const router = useRouter();

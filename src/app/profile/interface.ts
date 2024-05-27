@@ -8,4 +8,5 @@ export interface IData {
   interests: Array<string>;
   zodiac: string | undefined;
   horoscope: string | undefined;
+  gender: string | undefined;
 }

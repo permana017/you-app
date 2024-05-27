@@ -1,6 +1,5 @@
 "use client";
 import React, { ChangeEvent, useState } from "react";
-import { PiPencilSimpleLine } from "react-icons/pi";
 import { IData } from "./interface";
 import InputField from "@/components/input";
 import Select from "@/components/select";
@@ -11,17 +10,11 @@ interface AboutProps {
 }
 
 const FormAbout: React.FC<AboutProps> = ({ data, onChangeData }) => {
-  const [form, setForm] = useState({
-    name: "",
-    gender: "",
-  });
   const handleSelect = (value: string) => {
     onChangeData(value, "gender");
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    console.log(typeof e.target.type);
-
     onChangeData(value, name);
   };
 
@@ -41,19 +34,13 @@ const FormAbout: React.FC<AboutProps> = ({ data, onChangeData }) => {
         </div>
         <p className="text-white opacity-35 col-span-2 mt-2.5 ">Gender:</p>
         <div className="col-span-3">
-          {/* <InputField
-            textRight
-            onChange={handleChangeInput}
-            value={form.name}
-            name="name"
-          /> */}
           <Select
             onChange={handleSelect}
             options={[
               { label: "Male", value: "Male" },
               { label: "Female", value: "Female" },
             ]}
-            value={form.gender}
+            value={data?.gender}
           />
         </div>
         <p className="text-white opacity-35 col-span-2 mt-2.5 ">Birthday:</p>
